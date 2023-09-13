@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Infrastructure.AssetProviding
 {
-    public class AssetProviderFromFiles<T> : IAssetProvider<T>, IAssetLoader where T : Object
+    public class AssetProvider<T> : IAssetProvider<T>, IAssetLoader where T : Object
     {
         public T StaticData { get; private set; }
 
@@ -11,12 +11,12 @@ namespace Infrastructure.AssetProviding
         private readonly string _errorMessage;
         private string _path;
 
-        public AssetProviderFromFiles(AssetsPathProvider assetsPaths)
+        public AssetProvider(AssetsPathProvider assetsPaths)
         {
             _assetsPaths = assetsPaths;
         }
 
-        public AssetProviderFromFiles(string assetsPaths, string errorMessage = "")
+        public AssetProvider(string assetsPaths, string errorMessage = "")
         {
             _path = assetsPaths;
             _errorMessage = errorMessage;
@@ -32,7 +32,7 @@ namespace Infrastructure.AssetProviding
         {
             if (_assetsPaths != null)
             {
-                _path = _assetsPaths.StaticsPaths[typeof(T)];
+                _path = _assetsPaths.GetPath(typeof(T));
             }
         }
 
