@@ -6,14 +6,14 @@ namespace Infrastructure.AssetProviding
 {
     public class AssetsPathProvider : IAssetsPathProvider
     {
-        private readonly Dictionary<Type, string> StaticsPaths = new()
+        private readonly Dictionary<Type, string> _staticsPaths = new()
         {
             { typeof(MovementStaticDataContainer), "Data/CurrencyData/CurrencyStaticDataContainer" },
         };
 
         public string GetPath(Type type)
         {
-            return StaticsPaths[type];
+            return _staticsPaths[type];
         }
     }
 }
