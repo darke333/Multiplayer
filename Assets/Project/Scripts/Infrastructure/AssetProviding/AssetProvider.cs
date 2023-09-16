@@ -1,5 +1,6 @@
 using Logging;
 using UnityEngine;
+using VContainer;
 
 namespace Infrastructure.AssetProviding
 {
@@ -7,11 +8,12 @@ namespace Infrastructure.AssetProviding
     {
         public T StaticData { get; private set; }
 
-        private readonly AssetsPathProvider _assetsPaths;
+        private readonly IAssetsPathProvider _assetsPaths;
         private readonly string _errorMessage;
         private string _path;
 
-        public AssetProvider(AssetsPathProvider assetsPaths)
+        [Inject]
+        public AssetProvider(IAssetsPathProvider assetsPaths)
         {
             _assetsPaths = assetsPaths;
         }
