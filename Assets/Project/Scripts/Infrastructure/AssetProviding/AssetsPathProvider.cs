@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Data.StaticData.Movement;
+using Data.StaticData.Player;
 
 namespace Infrastructure.AssetProviding
 {
@@ -8,7 +9,8 @@ namespace Infrastructure.AssetProviding
     {
         private readonly Dictionary<Type, string> _staticsPaths = new()
         {
-            { typeof(MovementStaticDataContainer), "Data/CurrencyData/CurrencyStaticDataContainer" },
+            { typeof(MovementStaticDataContainer), "Data/Movement/MovementStaticDataContainer" },
+            { typeof(PlayerStaticDataContainer), "Data/Player/PlayerStaticDataContainer" },
         };
 
         public string GetPath(Type type)

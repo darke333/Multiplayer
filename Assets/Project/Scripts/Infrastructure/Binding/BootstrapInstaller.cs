@@ -1,4 +1,5 @@
 ﻿using Data.StaticData.Movement;
+using Data.StaticData.Player;
 using Infrastructure.AssetProviding;
 using Infrastructure.GameStateMachine;
 using Infrastructure.GameStateMachine.States;
@@ -36,7 +37,9 @@ namespace Infrastructure.Binding
 
         private void RegisterAssets()
         {
+            
             _builder.Register<AssetProvider<MovementStaticDataContainer>>(Lifetime.Singleton).AsImplementedInterfaces();
+            _builder.Register<AssetProvider<PlayerStaticDataContainer>>(Lifetime.Singleton).AsImplementedInterfaces();
         }
     }
 }
